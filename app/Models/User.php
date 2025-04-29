@@ -49,7 +49,28 @@ class User extends Authenticatable
     }
 
     public function posts()
-    {
+    {//user_id
         return $this->hasMany(Post::class);
     }
+    
+    public function comments()
+    {
+        return $this->belongsTo(Comment::class);
+    }
+    
+    public function likes()
+    {
+        return $this->belongsToMany(Post::class,'likes');
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany(User::class,'follows','user_id','following_user_id')->withPivot('confirmed');
+    }
+
+    public function follower()
+    {
+        return $this->belongsToMany(User::class,'follows','following_user_id','user_id')->withPivot('confirmed');
+    }
+
 }
