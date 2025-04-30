@@ -9,7 +9,15 @@ class Post extends Model
 {
     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory;
+    
+    protected $fillable=
+    [
 
+        'description',
+        'slug',
+        'image',
+        'user_id'
+    ];
 
     public function owner()
     {
