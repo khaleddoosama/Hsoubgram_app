@@ -20,6 +20,11 @@
                             {{ $post->owner->username }}
                         </a>
                     </div>
+                    @if($post->owner->id===auth()->id())
+                    <a href="{{ route('get_update_post',$post->slug) }}">
+                        <i class='bx bx-message-square-edit'></i>
+                    </a>
+                    @endif
                 </div>
             </div>
 

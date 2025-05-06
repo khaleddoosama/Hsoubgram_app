@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <div class="card p-10">
-        <h1 class="text-3xl mb-10">{{ __('Create a new post') }}</h1>
+        <h1 class="text-3xl mb-10">{{ __('Edit post') }}</h1>
 
         <div class="flex flex-col justify-center items-center w-full">
             @if ($errors->any())
@@ -15,11 +15,12 @@
               @endif  
         </div>
 
-        <form action="/post/create" method="post" class="w-full" enctype="multipart/form-data">
+        <form action="{{ route('post.update',$post->slug) }}" method="post" class="w-full" enctype="multipart/form-data">
             @csrf
-            <x-create-edit  />
+            @method('PUT')
+           <x-create-edit :post="$post" />
 
-            <x-primary-button class="mt-4" >{{ __('Create Post') }}
+            <x-primary-button class="mt-4" >{{ __('Update Post') }}
 
             </x-primary-button>
         </form>
