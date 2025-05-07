@@ -20,10 +20,22 @@
                             {{ $post->owner->username }}
                         </a>
                     </div>
-                    @if($post->owner->id===auth()->id())
-                    <a href="{{ route('get_update_post',$post->slug) }}">
-                        <i class='bx bx-message-square-edit'></i>
-                    </a>
+                    @if ($post->owner->id === auth()->id())
+                        <a href="{{ route('get_update_post', $post->slug) }}">
+                            <i class='bx bx-message-square-edit'></i>
+                        </a>
+
+                        <form id="delete-post-form-{{ $post->id }}" action="{{ route('post.destroy', $post->slug) }}"
+                            method="POST" class="inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" class="text-red-600" onclick="confirmDelete({{ $post->id }})">
+
+                                <li class="bx bx-message-square-x inline ml-2"></li>
+                            </button>
+
+
+                        </form>
                     @endif
                 </div>
             </div>
@@ -77,15 +89,16 @@
             <div class="border-t p-5">
                 <form action="/post/{{ $post->slug }}/comment" method="POST">
                     @csrf
-                    @if($errors->has('body'))
-                    <div class="text-red-500 text-sm mb-2">
-                        {{ $errors->first('body') }}
-                    </div>
+                    @if ($errors->has('body'))
+                        <div class="text-red-500 text-sm mb-2">
+                            {{ $errors->first('body') }}
+                        </div>
                     @endif
 
                     <div class="flex flex-row">
-                        <textarea name="body" id="comment_body" placeholder="{{ __('Add a comment..') }}" 
-                        class="h-5 grow resize-none overflow-hidden border-none bg-none p-0 placeholder-gray-400 outline-0 focus:ring-0" required></textarea>
+                        <textarea name="body" id="comment_body" placeholder="{{ __('Add a comment..') }}"
+                            class="h-5 grow resize-none overflow-hidden border-none bg-none p-0 placeholder-gray-400 outline-0 focus:ring-0"
+                            required></textarea>
                         <button type="submit" class="ltr:ml-5 rtl:mr-5 border-none bg-white text-blue-500">
                             {{ __('Comment') }}
 
@@ -112,3 +125,25 @@
 
     </div>
 </x-app-layout>
+<script>
+    function confirmDelete(postId) {
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'this action cannot be undone!',
+            icon: 'warning',
+            showCancelButton: true,
+            confrimButtonColor: '#d33',
+            cancelButtonClolor: '#3086d6',
+            confrimButtonText: 'Yes Delete it ',
+            cancelButtonText: 'Cancel'
+
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-post-form-' + postId).submit();
+            }
+
+        });
+
+    }
+</script>
