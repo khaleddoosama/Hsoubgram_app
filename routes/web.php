@@ -5,9 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -25,6 +23,7 @@ Route::controller(PostController::class)->group(function(){
    Route::get('post/{post:slug}/edit','edit')->name('get_update_post');
    Route::put('post/edit/{post:slug}','update')->name('post.update');
    Route::delete('/post/{post:slug}','destroy')->name('post.destroy');
+   Route::get('/','index')->name('home_page');
     
 });
 Route::post('/post/{post:slug}/comment',[CommentController::class,'store'])->name('comment_store');

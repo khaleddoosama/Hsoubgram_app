@@ -72,5 +72,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(User::class,'follows','following_user_id','user_id')->withPivot('confirmed');
     }
+    public function suggested_users()
+    {
+        return User::whereNot('id',auth()->id())->get()->shuffle()->take(5);
+    }
     
 }
