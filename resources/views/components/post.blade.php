@@ -22,7 +22,7 @@
 
         @if ($post->comments()->count() > 0)
             <a href="/post/{{ $post->slug }}" class="p-3 font-bold text-sm text-gray-500">
-                {{ __('View all' . $post->comments()->count() . 'comments') }}</a>
+                {{ __('View all ' . $post->comments()->count() . ' comments') }}</a>
         @endif
 
         <div class="p-3 text-gray-400 uppercase text-xs">
