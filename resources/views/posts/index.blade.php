@@ -23,7 +23,7 @@
             <div class="flex flex-row text-sm gap-2">
                 <div class="mr-5">
                     <a href="{{ route('user.profile',Auth::user()->username) }}">
-                        <img src="{{ Auth::user()->image }}" alt="{{ auth()->user()->username }}"
+                        <img src="{{Str::startsWith(auth()->user()->image,'https') ? auth()->user()->image : asset('storage/'.auth()->user()->image)  }}" alt="{{ auth()->user()->username }}"
                             class="border border-gray-300 rounded-full h-12 w-12">
                     </a>
                 </div>
@@ -47,7 +47,7 @@
 
                             <div class="mr-5">
                                 <a href="{{ route('user.profile',$suggested->username) }}">
-                                    <img src="{{ $suggested->image }}"
+                                    <img src="{{Str::startsWith($suggested->image,'https') ? $suggested->image : asset('storage/'.$suggested->image)  }}"
                                         class=" rounded-full h-9 w-9 border border-gray-300">
                                 </a>
                             </div>

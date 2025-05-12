@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
@@ -26,13 +25,27 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $imagePath     = $request->file('image')->store('users', 'public');
+            $data['image'] = $imagePath;
+        }
+
+        if ($request->private_account == 'on') {
+            $data['private_account'] = 1;
+        } else {
+            $data['private_account'] = 0;
+        }
+
+        $user->fill($data);
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
 
-        $request->user()->save();
+        $user->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }

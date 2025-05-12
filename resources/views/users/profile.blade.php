@@ -44,7 +44,7 @@
 
         {{-- User Bio --}}
 
-        <div class="text-md mt-8 px-4 col-span3 col-start-1 order-3 md:col-start-2 md:order-4 md:mt-0">
+        <div class="text-md mt-8 px-4 col-span-3 col-start-1 order-3 md:col-start-2 md:order-4 md:mt-0">
 
             <p class="font-bold">{{ $user->name }}</p>
             {!! nl2br(e($user->bio)) !!}
