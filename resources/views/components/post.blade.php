@@ -15,6 +15,25 @@
                 class="h-auto w-full object-cover">
         </div>
 
+        <div class="p-3 flex flex-row">
+
+            <a href="/post/{{ $post->slug }}/like">
+                @if($post->liked(auth()->user()))
+
+            <i class="bx bxs-heart text-red-600 text-3xl hover:text-gray-400 cursor-pointer mr-3"></i>
+
+                @else
+
+                  <i class="bx bx-heart text-3xl hover:text-gray-400 cursor-pointer mr-3"></i>
+                @endif
+
+            </a>
+
+            <a href="{{ route('show_post',$post->slug) }}">
+                <i class="bx bx-comment text-3xl hover:text-gray-400 cursor-pointer mr-3"></i>
+            </a>
+        </div>
+
         <div class="p-3">
             <a href="" class="font-bold">{{ $post->owner->username }}</a>
             {{ $post->description }}

@@ -13,10 +13,10 @@
             {{-- Top --}}
             <div class="border-b-2">
                 <div class="flex items-center p-5 gap-0">
-                    <img src="{{ $post->owner->image }}" alt="{{ $post->owner->username }}"
+                    <img src="{{ Str::startsWith($post->owner->image,'https') ? $post->owner->image : asset('storage/'.$post->owner->image) }}" alt="{{ $post->owner->username }}"
                         class="mr-5 h-10 w-10 rounded-full">
                     <div class="grow">
-                        <a href="" class="font-bold">
+                        <a href="{{ route('user.profile',$post->owner->username) }}" class="font-bold">
                             {{ $post->owner->username }}
                         </a>
                     </div>
@@ -44,11 +44,11 @@
 
             <div class="grow">
                 <div class="flex items-start px-5 py-2 gap-3">
-                    <img src="{{ $post->owner->image }}" class="ltr:mr-5 rtl:ml-5 h-10 w-10 rounded-full">
+                    <img src="{{ Str::startsWith($post->owner->image,'https') ? $post->owner->image : asset('storage/'.$post->owner->image) }}" class="ltr:mr-5 rtl:ml-5 h-10 w-10 rounded-full">
 
                     <div class="flex flex-col">
                         <div>
-                            <a href="" class="font-bold">
+                            <a href="{{ route('user.profile',$post->owner->username) }}" class="font-bold">
                                 {{ $post->owner->username }}
                             </a>
                             <span class="inline">{{ $post->description }}</span>
@@ -65,11 +65,12 @@
 
                 @foreach ($post->comments as $comment)
                     <div class="flex items-start px-5 py-2 gap-2">
-                        <img class="h-10 w-10 rounded-full ltr:mr-5 rtl:ml-5" src="{{ $comment->owner->image }}">
+                        <img class="h-10 w-10 rounded-full ltr:mr-5 rtl:ml-5" 
+                        src="{{ Str::startsWith($comment->owner->image,'https') ? $comment->owner->image : asset('storage/'.$comment->owner->image) }}">
 
                         <div class="flex flex-col">
                             <div>
-                                <a href="" class="font-bold mr-2 inline-block">
+                                <a href="{{ route('user.profile',$comment->owner->username) }}" class="font-bold mr-2 inline-block">
                                     {{ $comment->owner->username }}</a>
                                 <span class="inline">{{ $comment->body }}</span>
                             </div>
@@ -82,6 +83,25 @@
                     </div>
                 @endforeach
 
+
+            </div>
+
+            <div class="border-t p-3 flex flex-row">
+                 <a href="/post/{{ $post->slug }}/like">
+                @if($post->liked(auth()->user()))
+
+            <i class="bx bxs-heart text-red-600 text-3xl hover:text-gray-400 cursor-pointer mr-3"></i>
+
+                @else
+
+                  <i class="bx bx-heart text-3xl hover:text-gray-400 cursor-pointer mr-3"></i>
+                @endif
+
+            </a>
+
+            <a onclick="document.getElementById('comment_body').focus()">
+                <i class="bx bx-comment text-3xl hover:text-gray-400 cursor-pointer mr-3"></i>
+            </a>
 
             </div>
 

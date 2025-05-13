@@ -4,7 +4,7 @@
 
         {{-- User Image --}}
         <div class="px-4 col-span-1 order-1">
-            <img src="{{ $user->image }}" alt="{{ $user->username }}"
+            <img src="{{ Str::startsWith($user->image ,'https') ? $user->image : asset('storage/'.$user->image )}}" alt="{{ $user->username }}"
                 class="rounded-full w-20 h-20 object-cover md:w-40 md:h-40 border border-neutral-3000">
 
         </div>
