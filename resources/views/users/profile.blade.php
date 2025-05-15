@@ -4,7 +4,8 @@
 
         {{-- User Image --}}
         <div class="px-4 col-span-1 order-1">
-            <img src="{{ Str::startsWith($user->image ,'https') ? $user->image : asset('storage/'.$user->image )}}" alt="{{ $user->username }}"
+            <img src="{{ Str::startsWith($user->image, 'https') ? $user->image : asset('storage/' . $user->image) }}"
+                alt="{{ $user->username }}"
                 class="rounded-full w-20 h-20 object-cover md:w-40 md:h-40 border border-neutral-3000">
 
         </div>
@@ -23,12 +24,19 @@
                         {{ __('Edit Profile') }}
                     </a>
                 </div>
+            @elseif(auth()->user()->isFollowing($user))
+                <a href="{{ route('unfollow',$user->username) }}"
+                    class="w-30 bg-red-400 text-white font-bold py-1 px-3 text-center rounded cursor-pointer self-start">
+                    {{ __('Unfollow') }}
+                </a>
+            @elseif(auth()->user()->isPending($user))
+                <span
+                    class="w-30 bg-gray-400 text-white px-3 py-1 rounded text-center self-start">{{ __('Pending') }}</span>
             @else
-                <div>
-                    <a href="" class="w-30 bg-blue-400 text-whire px-3 py-1 rounded text-center mt-2">
-                        {{ __('Follow') }}
-                    </a>
-                </div>
+                <a href="{{ route('follow',$user->username) }}"
+                    class="w-30 bg-blue-400 text-white font-bold py-1 px-3 text-center rounded cursor-pointer self-start">
+                    {{ __('Follow') }}
+                </a>
             @endif
 
             @guest
@@ -69,20 +77,20 @@
 
                 <li class="flex flex-col md:flex-row text-center gap-2">
                     <div class="ltr:md:mr-1 rtl:md:ml-1 font-bold md:font-normal">
-                        4
+                        {{ $user->follower()->wherePivot('confirmed', true)->get()->count() }}
                     </div>
                     <a href="" class="text-neutral-500 md:text-black">
-                        Followers
+                        {{ $user->follower()->count() > 1 ? __('followers') : __('follower') }}
                     </a>
 
                 </li>
 
                 <li class="flex flex-col md:flex-row text-center gap-2">
                     <div class="ltr:md:mr-1 rtl:md:ml-1 font-bold md:font-normal">
-                        5
+                        {{ $user->following()->wherePivot('confirmed', true)->get()->count() }}
                     </div>
                     <a href="" class="text-neutral-500 md:text-black">
-                        Following
+                        {{ $user->following()->count() > 1 ? __('followers') : __('follower') }}
                     </a>
 
                 </li>
@@ -128,8 +136,8 @@
                 {{ __('This account is private follow to see thier photos') }}
             @else
                 {{ __('NO posts to show') }}
-              @endif
+            @endif
         </div>
-      
-  @endif
+
+    @endif
 </x-app-layout>

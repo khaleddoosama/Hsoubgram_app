@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
@@ -34,7 +35,9 @@ Route::controller(PostController::class)->group(function(){
 });
 Route::post('/post/{post:slug}/comment',[CommentController::class,'store'])->name('comment_store');
 Route::get('/post/{post:slug}/like',LikeController::class)->name('like.post');
-    
+Route::get('follow/{user:username}',[FollowController::class,'follow'])->name('follow'); 
+Route::get('unfollow/{user:username}',[FollowController::class,'unfollow'])->name('unfollow'); 
+
 });
 
 require __DIR__.'/auth.php';
