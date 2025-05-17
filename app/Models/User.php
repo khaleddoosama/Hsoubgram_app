@@ -78,6 +78,7 @@ class User extends Authenticatable
     
     public function suggested_users()
     {
+        /** @var \App\Models\User $user */
         $user=Auth::user();
         
         return User::where('id','!=',$user->id)

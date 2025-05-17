@@ -17,6 +17,7 @@
                 {{ $user->username }}
             </div>
 
+            @auth
             @if ($user->id === auth()->id())
                 <div class="flex space-x-3 items-center">
                     <a href="/profile"
@@ -38,10 +39,11 @@
                     {{ __('Follow') }}
                 </a>
             @endif
+            @endauth
 
             @guest
                 <div>
-                    <a href="/login" class="w-30 bg:blue-400 text-white px-3 py-1 rounded text-center mt-2">
+                    <a href="/login"  class="w-30 bg-blue-400 text-white font-bold py-1 px-3 text-center rounded cursor-pointer self-start">
                         {{ __('Follow') }}
                     </a>
                 </div>
