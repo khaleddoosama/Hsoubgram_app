@@ -102,21 +102,14 @@
             </div>
 
             <div class="border-t p-3 flex flex-row">
-                <a href="/post/{{ $post->slug }}/like">
-                    @if ($post->liked(auth()->user()))
-                        <i class="bx bxs-heart text-red-600 text-3xl hover:text-gray-400 cursor-pointer mr-3"></i>
-                    @else
-                        <i class="bx bx-heart text-3xl hover:text-gray-400 cursor-pointer mr-3"></i>
-                    @endif
-
-                </a>
+               @livewire('like',['post'=>$post])
 
                 <a onclick="document.getElementById('comment_body').focus()">
                     <i class="bx bx-comment text-3xl hover:text-gray-400 cursor-pointer mr-3"></i>
                 </a>
 
             </div>
-
+            <livewire:likedby :post="$post" />
 
             <div class="border-t p-5">
                 <form action="/post/{{ $post->slug }}/comment" method="POST">
