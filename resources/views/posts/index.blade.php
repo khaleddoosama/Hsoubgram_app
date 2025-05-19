@@ -62,7 +62,7 @@
 
                             </div>
 
-                            <a href="{{ route('follow',$suggested->username) }}" class="text-blue-500 font-bold">{{ __('Follow') }}</a>
+                           <livewire:followbutton :userFriend="$suggested" classes="bg-gray" />
                         </li>
                     @endforeach
 
