@@ -1,4 +1,4 @@
-<div max-h-96 flex flex-col>
+<div  class="max-h-96 flex flex-col">
 <div class="flex w full items-center border-b border-b-2 border-b-neutral-100 p-2">
     <h1 class="text-lg font-bold text-center pb-2 grow">{{ __('Follower') }}</h1>
     <button wire:click="$dispatch('closeModal')"></button>
