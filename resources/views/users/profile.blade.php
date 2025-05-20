@@ -69,25 +69,9 @@
 
                 </li>
 
-                <li class="flex flex-col md:flex-row text-center gap-2">
-                    <div class="ltr:md:mr-1 rtl:md:ml-1 font-bold md:font-normal">
-                        {{ $user->follower()->wherePivot('confirmed', true)->get()->count() }}
-                    </div>
-                    <a href="" class="text-neutral-500 md:text-black">
-                        {{ $user->follower()->count() > 1 ? __('followers') : __('follower') }}
-                    </a>
+            <livewire:follower :userId="$user->id" />
 
-                </li>
-
-                <li class="flex flex-col md:flex-row text-center gap-2">
-                    <div class="ltr:md:mr-1 rtl:md:ml-1 font-bold md:font-normal">
-                        {{ $user->following()->wherePivot('confirmed', true)->get()->count() }}
-                    </div>
-                    <a href="" class="text-neutral-500 md:text-black">
-                        {{ $user->following()->count() > 1 ? __('followers') : __('follower') }}
-                    </a>
-
-                </li>
+            <livewire:following :userId="$user->id" />
 
             </ul>
 
