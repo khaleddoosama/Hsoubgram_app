@@ -62,6 +62,27 @@
 
 
 
+
+                    <div class="hidden md:block">
+                        <x-dropdown align="right" width="96">
+                            <x-slot name="trigger">
+                                <button class="text-[1.6rem] ltr:mr-2 rtl:ml-2 leading-5">
+                                    <div class="relative">
+                                        <i class="bx bxs-inbox">
+
+                                        </i>
+                                        <livewire:pending-followers-count />
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <livewire:pending-followers-list />
+                            </x-slot>
+
+                        </x-dropdown>
+                    </div>
+
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button

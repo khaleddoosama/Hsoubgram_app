@@ -3,7 +3,8 @@
 
     {{-- Header --}}
     <div class="card-header gap-2">
-        <img src="{{Str::startsWith($post->owner->image,'https') ? $post->owner->image : asset('storage/'. $post->owner->image)  }}" class="h-9 w-9 rounded-full">
+        <img src="{{ Str::startsWith($post->owner->image, 'https') ? $post->owner->image : asset('storage/' . $post->owner->image) }}"
+            class="h-9 w-9 rounded-full">
         <a href="" class="font-bold">{{ $post->owner->username }}</a>
 
     </div>
@@ -17,9 +18,9 @@
 
         <div class="p-3 flex flex-row">
 
-           @livewire('like',['post' =>$post])
-           
-            <a href="{{ route('show_post',$post->slug) }}">
+            @livewire('like', ['post' => $post])
+
+            <a href="{{ route('show_post', $post->slug) }}">
                 <i class="bx bx-comment text-3xl hover:text-gray-400 cursor-pointer mr-3"></i>
             </a>
         </div>

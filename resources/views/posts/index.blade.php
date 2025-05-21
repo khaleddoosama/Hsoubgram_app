@@ -5,16 +5,7 @@
 
 
         {{-- Left Side --}}
-        <div class="w-[30rem] mx-auto lg:w-[95rem]">
-            @forelse ($posts as $post)
-                <x-post :post="$post" />
-            @empty
-                <div class="max-w-2xl mx-auto">
-                    {{ __('Start following your friends and enjoy') }}
-                </div>
-            @endforelse
-
-        </div>
+       <livewire:postslist />
 
         {{-- Right Side --}}
 
@@ -46,7 +37,7 @@
 
                 <ul>
                     @foreach ($suggestedusers as $suggested)
-                        <li class="flex flex-row my-5 text-sm justify-items-center gap-2">
+                        <li class="flex items-center justify-between my-5 text-sm">
 
                             <div class="mr-5">
                                 <a href="{{ route('user.profile',$suggested->username) }}">
