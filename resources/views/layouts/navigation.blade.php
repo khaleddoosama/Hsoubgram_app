@@ -77,11 +77,46 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <livewire:pending-followers-list />
+                                <div class="w-80"> {{-- Ensures dropdown width is enough --}}
+                                    <livewire:pending-followers-list />
+                                </div>
                             </x-slot>
+
 
                         </x-dropdown>
                     </div>
+
+
+
+                     <div class="hidden md:block">
+                        <x-dropdown align="right" width="96">
+                            <x-slot name="trigger">
+                                <button class="text-[1.6rem] ltr:mr-2 rtl:ml-2 leading-5">
+                                    <div class="relative">
+                                        <i class="bx bxs-bell">
+
+                                        </i>
+                                        <livewire:notification-count />
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <div class="w-80"> {{-- Ensures dropdown width is enough --}}
+                                    <livewire:notification-dropdown/>
+                                </div>
+                            </x-slot>
+
+
+                        </x-dropdown>
+                    </div>
+
+
+
+
+
+
+                   
 
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
@@ -158,7 +193,7 @@
                     </x-responsive-nav-link>
 
 
-                    <x-responsive-nav-link :href="route('user.profile',Auth::user()->username)">
+                    <x-responsive-nav-link :href="route('user.profile', Auth::user()->username)">
                         {{ __('Profile') }}
                     </x-responsive-nav-link>
 
@@ -166,7 +201,7 @@
                         {{ __('New Post') }}
                     </x-responsive-nav-link>
 
-                   
+
 
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
