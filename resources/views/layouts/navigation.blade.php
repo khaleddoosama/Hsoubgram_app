@@ -51,12 +51,9 @@
 
                     </a>
 
-                    <a href="{{ route('create_post') }}" class="text-[1.6rem] rtl:ml-3">
-                        {!! url()->current() == route('create_post')
-                            ? '<i class="bx bxs-message-square-add text-[1.6rem]"></i>'
-                            : '<i class="bx bx-message-square-add text-[1.6rem]"></i>' !!}
-
-                    </a>
+                 <button onclick="Livewire.dispatch('openModal',{ component: 'create-post-modal'})">
+                    <i class="bx bx-message-square-add text-[1.6rem]"></i>
+                 </button>
 
 
 

@@ -9,7 +9,7 @@ use Livewire\Component;
 class PostsList extends Component
 {
     public $posts=[];
-    protected $listeners=['toggleFollow'=>'loadPosts'];
+    protected $listeners=['toggleFollow'=>'loadPosts','postCreated'=>'addPostList'];
     
     public function mount()
     {
@@ -22,6 +22,16 @@ class PostsList extends Component
         ->wherePivot('confirmed',true)->get()->pluck('id');
 
         $this->posts =Post::whereIn('user_id',$ids)->latest()->get();
+    }
+
+
+    public function addPostList($postid)
+    {
+        $post=Post::find($postid);
+        if($post)
+        {
+            $this->posts->prepend($post); 
+         }
     }
     public function render()
     {
