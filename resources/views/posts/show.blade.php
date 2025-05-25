@@ -21,9 +21,13 @@
                         </a>
                     </div>
                     @can('update',$post)
-                        <a href="{{ route('get_update_post', $post->slug) }}">
+                        {{-- <a href="{{ route('get_update_post', $post->slug) }}">
                             <i class='bx bx-message-square-edit'></i>
-                        </a>
+                        </a> --}}
+
+                        <button onclick="Livewire.dispatch('openModal',{component: 'edit-post-modal',arguments:{postid:{{ $post->id }}}})">
+                            <i class='bx bx-message-square-edit'></i>
+                        </button>
 
                         <form id="delete-post-form-{{ $post->id }}"
                             action="{{ route('post.destroy', $post->slug) }}" method="POST" class="inline">
