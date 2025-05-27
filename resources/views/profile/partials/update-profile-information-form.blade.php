@@ -84,7 +84,19 @@
             <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">{{ __('Private Account') }}</span>
         </label>
 
+        <div class="col-span-6 sm:col-span-3">
+            <label for="lang" class="block text-sm font-medium text-gray-700">{{ __('Language') }}</label>
+            <select name="lang" id="lang" 
+            class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 ltr:px-3 rtl:px-8 shadow-sm focus:border-indigo-500 
+            focus:outline-none focus:ring-indio-500 sm:text-sm">
 
+
+            <option value="ar" {{ $user->lang =='ar' ? 'selected' : '' }}> العربية</option>
+            <option value="en" {{ $user->lang =='en' ? 'selected' : '' }}> English</option>
+
+            </select>
+
+        </div>
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 

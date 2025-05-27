@@ -37,7 +37,7 @@
 
                 <ul>
                     @foreach ($suggestedusers as $suggested)
-                        <li class="flex items-center justify-between my-5 text-sm">
+                        <li class="flex items-center justify-between my-5 text-sm gap-2">
 
                             <div class="mr-5">
                                 <a href="{{ route('user.profile',$suggested->username) }}">
