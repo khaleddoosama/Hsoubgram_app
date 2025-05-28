@@ -9,10 +9,10 @@
 
 
         {{-- Right Side --}}
-        <div class="flex w-full flex-col bg-white md:w-5/12">
+        <div class="flex w-full flex-col bg-white md:w-5/12 gap-2">
             {{-- Top --}}
-            <div class="border-b-2">
-                <div class="flex items-center p-5 gap-0">
+            <div class="border-b-2 ">
+                <div class="flex items-center p-5 gap-1">
                     <img src="{{ Str::startsWith($post->owner->image, 'https') ? $post->owner->image : asset('storage/' . $post->owner->image) }}"
                         alt="{{ $post->owner->username }}" class="mr-5 h-10 w-10 rounded-full">
                     <div class="grow">
@@ -55,7 +55,7 @@
 
                     <div class="flex flex-col">
                         <div>
-                            <a href="{{ route('user.profile', $post->owner->username) }}" class="font-bold">
+                            <a href="{{ route('user.profile', $post->owner->username) }}"  class="font-bold mr-2 inline-block">
                                 {{ $post->owner->username }}
                             </a>
                             <span class="inline">{{ $post->description }}</span>

@@ -1,6 +1,6 @@
 <div class="relative flex items-center">
     <x-text-input class="w-56 md:w-64 lg:w-96 border-none bg-gray-200 rounded-xl h-10 focus:ring-0"
-        wire:model.live="searchInput" placeholder="{{ 'Search...' }}" autocomplete="off" />
+        wire:model.live="searchInput" placeholder="{{ __('Search...') }}" autocomplete="off" />
 
     @if (!empty($searchInput))
         <button class="absolute top-1.5 right-2" wire:click="clear">

@@ -87,7 +87,7 @@
     "Follow": "متابعة",
     "Unfollow": "إلغاء المتابعة",
     "Post": "انشر",
-    "Add a comment...": "أضف تعليقًا...",
+    "Add a comment..": "أضف تعليقًا...",
     "Search...": "ابحث",
     "Suggestion for you": "اقتراحات المتابعة",
     "posts": "منشورات",
@@ -122,6 +122,7 @@
     "This Account is Private Follow to see their photos.": "هذا الحساب خاص. تابع الحساب لمشاهدة الصور.",
     "Filters": "الفلاتر",
     "Write description...": "اكتب وصفًا",
+    "Write  description": "اكتب وصفًا",
     "Publish": "نشر",
     "Delete": "حذف",
     "Start Following Your Friends and Enjoy.": "استمتع بمتابعة أصدقائك.",
@@ -140,5 +141,18 @@
     "Notifications":"الاشعارات",
     "Start Follwing your friends and Enjoy.":"..ابدأ بمتابعة اصدقائك و استمتع",
     "ago":"منذ",
-    "UserName":"اسم المستخدم"
+    "filters":"الفلاتر",
+    "Security":"معلومات الامان",
+    "UserName":"اسم المستخدم",
+    "There are no pending Requests.":" لا يوجد اي طلبات معلقة",
+    "Follower":"متابع ",
+    "unfollow":"الغاء متابعة",
+    "Change Image":"تغيير الصورة",
+    "CHOOSE FILE": " اختر صورة ",
+    "and":"و",
+    "others":"اخرون",
+  "commented on your post": "قام  بالتعليق على منشورك",
+  "liked on your post": "قام بالاعجاب على منشورك"
+  
+
 }

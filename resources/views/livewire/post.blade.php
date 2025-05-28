@@ -5,7 +5,7 @@
     <div class="card-header gap-2">
         <img src="{{ Str::startsWith($post->owner->image, 'https') ? $post->owner->image : asset('storage/' . $post->owner->image) }}"
             class="h-9 w-9 rounded-full">
-        <a href="" class="font-bold">{{ $post->owner->username }}</a>
+        <a href="{{ route('user.profile',$post->owner->username) }}" class="font-bold">{{ $post->owner->username }}</a>
 
     </div>
 
@@ -26,13 +26,14 @@
         </div>
 
         <div class="p-3">
-            <a href="" class="font-bold">{{ $post->owner->username }}</a>
+            <a href="{{ route('user.profile',$post->owner->username) }}" class="font-bold">{{ $post->owner->username }}</a>
             {{ $post->description }}
         </div>
 
         @if ($post->comments()->count() > 0)
             <a href="/post/{{ $post->slug }}" class="p-3 font-bold text-sm text-gray-500">
-                {{ __('View all ' . $post->comments()->count() . ' comments') }}</a>
+                {{ __('View all :count comments', ['count' => $post->comments()->count()]) }}
+            </a>
         @endif
 
         <div class="p-3 text-gray-400 uppercase text-xs">
@@ -45,7 +46,7 @@
         <form action="/post/{{ $post->slug }}/comment" method="POST">
             @csrf
             <div class="flex flex-row">
-                <textarea name="body" id="comment_body" placeholder="{{ __('Add a comment...') }}"
+                <textarea name="body" id="comment_body" placeholder="{{ __('Add a comment..') }}"
                     class="h-5 grow resize-none overflow-hidden border-none bg-none p-0 placeholder-gray-400 outline-0 focus-ring-0"></textarea>
                 <button type="submit"
                     class="ltr:ml-5 rtl:mr-5 border-none bg-white text-blue-500">{{ __('Comment') }}</button>

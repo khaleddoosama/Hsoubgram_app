@@ -58,7 +58,7 @@
 
             <ul class="text-md flex flex-row justify-between md:justify-start md:gap-8 md:text-xl">
 
-                <li class="flex flex-col md:flex-row text-center">
+                <li class="flex flex-col md:flex-row text-center gap-2">
                     <div class="md:mr-2 font-bold md:font-normal">
                         {{ $user->posts->count() }}
 

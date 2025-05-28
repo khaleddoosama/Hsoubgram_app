@@ -28,7 +28,7 @@ class PostLiked extends Notification
         return[
 
           'type'=>'like',
-          'message'=> $this->likedBy->username.' liked on your post',
+         'message'      => __('liked on your post'),
           'username'=> $this->likedBy->username,
           'user_image'=> $this->likedBy->image,
           'post_link' =>route('show_post',$this->post->slug),  

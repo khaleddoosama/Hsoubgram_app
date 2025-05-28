@@ -1,4 +1,4 @@
-<div class="h-[50rem] lg:flex lg:flex-row overflow-y-auto">
+<div class="h-[50rem] lg:flex lg:flex-row overflow-y-auto rtl:text-right ltr:text-left">
     @if (session('error'))
         <div class="text-sm text-red-500 py-5">
             {{ session('error') }}
