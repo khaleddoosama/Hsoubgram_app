@@ -59,8 +59,8 @@ php artisan serve
 The application will now be available at:  
 `http://127.0.0.1:8000`
 
-### 8. (Optional) Run Frontend Build
-If the project uses Vite or another frontend bundler:
+### 8.  Run Frontend Build
+ the project uses Vite:
 ```bash
 npm run dev
 ```
