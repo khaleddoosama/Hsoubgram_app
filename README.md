@@ -6,7 +6,7 @@ Follow these steps to clone and run the project locally:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/khaleddoosama/Hsoubgram_app.git
 cd your-repo
 ```
 
