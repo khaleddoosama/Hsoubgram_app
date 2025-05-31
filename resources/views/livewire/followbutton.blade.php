@@ -1,4 +1,4 @@
-<div>
+<div class="flex space-x-3 items-center">
     @if ($isFollowing)
         <a wire:click="toggle_follow"
            class="w-30 cursor-pointer text-red-500 text-sm font-bold py-1 px-3 text-center rounded 

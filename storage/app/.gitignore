@@ -1,4 +1,5 @@
-*
-!private/
-!public/
+# Don't ignore the storage directory
+!storage/
+
+# Ensure .gitignore is not ignored
 !.gitignore
