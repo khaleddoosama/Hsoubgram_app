@@ -1,73 +1,45 @@
-# Your Project Name
+# مشروع Hsoubgram
 
-## Installation and Setup
+## تثبيت وتشغيل المشروع
 
-Follow these steps to clone and run the project locally:
+نقوم بفتح المشروع وفي منفذ الأوامر نقوم بالخطوات التالية:
 
-### 1. Clone the Repository
+### 1- استنساخ المشروع من GitHub:
 ```bash
 git clone https://github.com/khaleddoosama/Hsoubgram_app.git
-```
+cd Hsoubgram_app
+2- تثبيت الحزم المطلوبة:composer install
 
-### 2. Install Dependencies
-```bash
-composer install
-```
+3-المشروع يحتوي على واجهة أمامية، نقوم أيضًا بتثبيت حزم NPM:  npm install
 
-If the project has frontend dependencies, install them using:
-```bash
-npm install
-```
+4- إنشاء ملف البيئة (.env): cp .env.example .env
 
-### 3. Set Up Environment File
-```bash
-cp .env.example .env
-```
+5-إعداد قاعدة البيانات في ملف .env تأكد من إنشاء قاعدة البيانات مسبقًا باستخدام phpMyAdmin أو أي أداة إدارة قواعد بيانات.
 
-Then, open the `.env` file and configure your database credentials:
-```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=your_database_name
-DB_USERNAME=your_database_user
-DB_PASSWORD=your_database_password
-```
+DB_DATABASE=your_databasename
+DB_USERNAME=your_db_username
+DB_PASSWORD=your_db_password
 
-Make sure the database exists in your MySQL server before running the next step.
+6- توليد مفتاح التطبيق: php artisan key:generate
 
-### 4. Generate Application Key
-```bash
-php artisan key:generate
-```
+7- إنشاء جداول قاعدة البيانات وإدخال بيانات تجريبية: php artisan migrate --seed
 
-### 5. Run Database Migrations & Seeders
-```bash
-php artisan migrate --seed
-```
+8- إنشاء رابط التخزين للصور: php artisan storage:link
 
-### 6. Create Storage Symlink
-```bash
-php artisan storage:link
-```
+9- تشغيل السيرفر المحلي: php artisan serve
 
-### 7. Start the Application
-```bash
-php artisan serve
-```
+10- تشغيل واجهة المستخدم الأمامية المشروع يستخدم Vite: npm run dev
 
-The application will now be available at:  
-`http://127.0.0.1:8000`
 
-### 8.  Run Frontend Build
- the project uses Vite:
-```bash
-npm run dev
-```
 
-### 9. Login Credentials
-Use any seeded email from the database and the default password `password` to log in.
 
----
 
-Now your Laravel project should be up and running
+
+
+
+
+
+
