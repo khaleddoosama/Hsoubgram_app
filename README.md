@@ -7,7 +7,6 @@ Follow these steps to clone and run the project locally:
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/khaleddoosama/Hsoubgram_app.git
-cd your-repo
 ```
 
 ### 2. Install Dependencies
