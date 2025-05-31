@@ -13,7 +13,8 @@
                             class="flex items-start">
 
                             <div class="flex-shrink-0 h-10 w-10 flex items-center justify-center">
-                                <img src="{{ $notify->data['user_image'] }}" class="h-8 w-8 rounded-full object-cover">
+                                <img src="{{ Str::startsWith($notify->data['user_image'], 'https') ? $notify->data['user_image'] : asset('storage/'.$notify->data['user_image']) }}"
+                                    class="h-8 w-8 rounded-full object-cover">
 
                             </div>
 
