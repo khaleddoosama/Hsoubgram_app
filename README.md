@@ -1,74 +1,31 @@
-# Your Project Name
+نقوم بفتح المشروع و في منفذ الاوامر نقوم
 
-## Installation and Setup
+1- تثبيت الحزم المطلوبة:composer install
 
-Follow these steps to clone and run the project locally:
+2- -المشروع يحتوي على واجهة أمامية، نقوم أيضًا بتثبيت حزم:npm install
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
-```
+3- إنشاء ملف البيئة(.env):cp .env.example .env
 
-### 2. Install Dependencies
-```bash
-composer install
-```
+3- توليد مفتاح التطبيق:php artisan key:generate
 
-If the project has frontend dependencies, install them using:
-```bash
-npm install
-```
+4- إعداد قاعدة البيانات في ملف .env تأكد من إنشاء قاعدة البيانات مسبقًا باستخدام phpMyAdmin أو أي أداة إدارة قواعد بيانات. DB_CONNECTION=mysql
 
-### 3. Set Up Environment File
-```bash
-cp .env.example .env
-```
-
-Then, open the `.env` file and configure your database credentials:
-```env
-DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
+
 DB_PORT=3306
-DB_DATABASE=your_database_name
-DB_USERNAME=your_database_user
-DB_PASSWORD=your_database_password
-```
 
-Make sure the database exists in your MySQL server before running the next step.
+DB_DATABASE=your_databasename
 
-### 4. Generate Application Key
-```bash
-php artisan key:generate
-```
+DB_USERNAME=your_db_username
 
-### 5. Run Database Migrations & Seeders
-```bash
-php artisan migrate --seed
-```
+DB_PASSWORD=your_db_password
 
-### 6. Create Storage Symlink
-```bash
-php artisan storage:link
-```
+5-إنشاء جداول قاعدة البيانات:php artisan migrate
 
-### 7. Start the Application
-```bash
-php artisan serve
-```
+6- إدخال بيانات تجريبية : php artisan db:seed
 
-The application will now be available at:  
-`http://127.0.0.1:8000`
+7- إنشاء رابط التخزين للصور : php artisan storage:link
 
-### 8. (Optional) Run Frontend Build
-If the project uses Vite or another frontend bundler:
-```bash
-npm run dev
-```
+8- تشغيل السيرفر المحلي:php artisan serve
 
-### 9. Login Credentials
-Use any seeded email from the database and the default password `password` to log in.
-
----
-
-Now your Laravel project should be up and running
+9- تشغيل واجهة المستخدم الأمامية المشروع يستخدم:npm run dev
